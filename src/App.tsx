@@ -2,6 +2,7 @@
 import './App.css';
 import { LessonButton } from './components/LessonButton';
 import { LessonButtonGroup } from './components/LessonButtonGroup';
+import { LessonCheckbox } from './components/LessonCheckbox';
 import { LessonRadioExample } from './components/LessonRadioExample';
 import { LessonRadioGroup } from './components/LessonRadioGroup';
 import { LessonSelect } from './components/LessonSelect';
@@ -17,8 +18,8 @@ function App() {
       {/* <LessonTextfield/> */}
       {/* <LessonRadioGroup/> */}
       {/* <LessonRadioExample/> */}
-      <LessonSelect/>
-      
+      {/* <LessonSelect/> */}
+      <LessonCheckbox/>
     </div>
   );
 }
