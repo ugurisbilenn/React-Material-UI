@@ -2,7 +2,17 @@ import {Box,FormControlLabel,Checkbox,FormControl,FormLabel,FormGroup,FormHelper
 import {useState} from 'react';
 export const LessonCheckbox = () => {
     const [isAccept, setIsAccept] = useState(false);
-    console.log(isAccept);
+    const [knowlegde, setKnowlegde] = useState<string[]>([]);
+
+    const handleKnowledgeChange = (event:React.ChangeEvent<HTMLInputElement>) => {
+        const index = knowlegde.indexOf(event.target.value);
+        if(index === -1){
+            setKnowlegde([...knowlegde,event.target.value]);
+        } else {
+            setKnowlegde(knowlegde.filter((item) => item !== event.target.value));
+        }
+    }
+    console.log(knowlegde);
   return (
     <Box>
     <Box>
@@ -21,6 +31,17 @@ export const LessonCheckbox = () => {
             <FormGroup row>
                 <FormControlLabel control={<Checkbox checked={isAccept} onChange={(e) => setIsAccept(e.target.checked)}/>} label="Kullanım Koşullarını kabul ediyorum"/>
                
+            </FormGroup>
+        </FormControl>
+    </Box>
+    <Box>
+        <FormControl>
+            <FormLabel>Frontendde neleri biliyorsun</FormLabel>
+            <FormGroup row>
+                <FormControlLabel value="react" control={<Checkbox checked={knowlegde.includes('react')} onChange={handleKnowledgeChange}/>} label="React Js"/>
+                <FormControlLabel value="angular" control={<Checkbox checked={knowlegde.includes('angular')} onChange={handleKnowledgeChange}/>} label="Angular Js"/>
+                <FormControlLabel value="vue" control={<Checkbox checked={knowlegde.includes('vue')} onChange={handleKnowledgeChange}/>} label="Vue Js"/>
+
             </FormGroup>
         </FormControl>
     </Box>
